@@ -24,3 +24,9 @@ Q.idea/sonarlint/securityhotspotstore/a/5/a5cc2925ca8258af241be7e5b0381edf302663
 Q.idea/sonarlint/securityhotspotstore/0/5/05d89f8e91f41715f76c4fc9ef687b0d6d6073bc,1\d\1d1a6c3e2fd3364e1cecf2f1039265485d3893a9
 w
 G.idea/sonarlint/issuestore/a/5/a5cc2925ca8258af241be7e5b0381edf30266302,e\d\ed67eb178d523a4b3f117dcbe0eda5196367ceec
+I
+src/lp/be/dto/Person.java,6\8\6826c61bc9b68eb379fbffd2083da2a30130d77f
+C
+src/lp/be/Data.java,3\a\3a3350a7daf85946fa1b462e10579b9e23c5705c
+C
+src/lp/fe/Lang.java,3\f\3f1adfc3f8a8453f984c9468a72083aeb31be1c4
