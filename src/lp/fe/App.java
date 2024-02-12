@@ -1,9 +1,12 @@
 package lp.fe;
 
+import lp.Manager;
+
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -12,21 +15,21 @@ import javax.swing.WindowConstants;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.util.HashMap;
-import java.util.Map;
+import java.awt.event.ActionListener;
 
 public class App {
 
-    private final Map<String, String> database = new HashMap<>();
-    private final JTextField name = new JTextField(20);
-    private final JTextField surname = new JTextField(20);
-    private final JTextField address = new JTextField(20);
-    private final JTextField phone = new JTextField(10);
+    private final Manager manager = Manager.getInstance();
+    private final JTextField firstNameTextField = new JTextField(20);
+    private final JTextField surnameTextField = new JTextField(20);
+    private final JTextField addressTextField = new JTextField(20);
+    private final JTextField phoneTextField = new JTextField(10);
+    private final JTextArea output = new JTextArea();
     private JPanel mainPanel;
 
     public void init() {
         JFrame frame = new JFrame();
-        frame.setSize(400, 500);
+        frame.setSize(450, 500);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
@@ -37,35 +40,88 @@ public class App {
 
     private void addComponents() {
         JPanel formPanel = new JPanel();
-        formPanel.setSize(380, 200);
+        formPanel.setSize(430, 200);
         formPanel.setLayout(new GridBagLayout());
         mainPanel.add(formPanel);
 
-        addItem(formPanel, new JLabel("Jméno:"), 0, 0, 1, GridBagConstraints.EAST);
-        addItem(formPanel, new JLabel("Příjmení:"), 0, 1, 1, GridBagConstraints.EAST);
-        addItem(formPanel, new JLabel("Adresa:"), 0, 2, 1, GridBagConstraints.EAST);
-        addItem(formPanel, new JLabel("Telefon:"), 0, 3, 1, GridBagConstraints.EAST);
+        addLabels(formPanel);
+        addTextFields(formPanel);
+        addButtons(formPanel);
 
-        addItem(formPanel, name, 1, 0, 2, GridBagConstraints.WEST);
-        addItem(formPanel, surname, 1, 1, 2, GridBagConstraints.WEST);
-        addItem(formPanel, address, 1, 2, 2, GridBagConstraints.WEST);
-        addItem(formPanel, phone, 1, 3, 1, GridBagConstraints.WEST);
-
-        JButton saveButton = new JButton("Uložit");
-        addItem(formPanel, saveButton, 0, 4, 1, GridBagConstraints.EAST);
-        JButton editButton = new JButton("Upravit");
-        addItem(formPanel, editButton, 1, 4, 1, GridBagConstraints.EAST);
-        JButton loadButton = new JButton("Načíst");
-        addItem(formPanel, loadButton, 2, 4, 1, GridBagConstraints.EAST);
-
-        JTextArea output = new JTextArea();
         JScrollPane outputScrollPane = new JScrollPane(output);
         outputScrollPane.setLocation(0, formPanel.getHeight());
-        outputScrollPane.setSize(350, 250);
+        outputScrollPane.setSize(380, 250);
         mainPanel.add(outputScrollPane);
 
         mainPanel.repaint();
         mainPanel.revalidate();
+    }
+
+    private void addTextFields(JPanel parentPanel) {
+        addTextField(parentPanel, firstNameTextField, 0, 2);
+        addTextField(parentPanel, surnameTextField, 1, 2);
+        addTextField(parentPanel, addressTextField, 2, 2);
+        addTextField(parentPanel, phoneTextField, 3, 1);
+    }
+
+    private void addTextField(JPanel parentPanel, JTextField textField, int position, int size) {
+        addItem(parentPanel, textField, 1, position, size, GridBagConstraints.WEST);
+    }
+
+    private void addLabels(JPanel parentPanel) {
+        addItem(parentPanel, new JLabel(Lang.FIRST_NAME.getText()), 0, 0, 1, GridBagConstraints.EAST);
+        addItem(parentPanel, new JLabel(Lang.SURNAME.getText()), 0, 1, 1, GridBagConstraints.EAST);
+        addItem(parentPanel, new JLabel(Lang.ADDRESS.getText()), 0, 2, 1, GridBagConstraints.EAST);
+        addItem(parentPanel, new JLabel(Lang.PHONE.getText()), 0, 3, 1, GridBagConstraints.EAST);
+    }
+
+    private void addButtons(JPanel parentPanel) {
+        addButton(Lang.SAVE.getText(), 0, parentPanel, evt -> {
+            int answer = manager.saveNewPerson(
+                    obtainKey(),
+                    firstNameTextField.getText(),
+                    surnameTextField.getText(),
+                    addressTextField.getText(),
+                    phoneTextField.getText());
+            if (answer == -2) {
+                JOptionPane.showMessageDialog(parentPanel, Lang.EMPTY_INPUTS.getText());
+            } else if (answer == -1) {
+                JOptionPane.showMessageDialog(parentPanel, Lang.PERSON_ALREADY_EXISTS.getText());
+            }
+            clearTextFields();
+        });
+        addButton(Lang.EDIT.getText(), 1, parentPanel, evt -> {
+            if (manager.editPerson(obtainKey(), addressTextField.getText(), phoneTextField.getText()) == -1) {
+                JOptionPane.showMessageDialog(parentPanel, Lang.PERSON_NOT_EXISTS.getText());
+            }
+            clearTextFields();
+        });
+        addButton(Lang.LOAD.getText(), 2, parentPanel, evt -> {
+            clearTextArea();
+            manager.getData().forEach(person -> output.setText(output.getText() + person + Lang.NEW_LINE.getText()));
+        });
+        addButton(Lang.CLEAR_LOG.getText(), 3, parentPanel, evt -> clearTextArea());
+    }
+
+    private void clearTextArea() {
+        output.setText(Lang.EMPTY.getText());
+    }
+
+    private void clearTextFields() {
+        firstNameTextField.setText(Lang.EMPTY.getText());
+        surnameTextField.setText(Lang.EMPTY.getText());
+        addressTextField.setText(Lang.EMPTY.getText());
+        phoneTextField.setText(Lang.EMPTY.getText());
+    }
+
+    private void addButton(String text, int position, JPanel parentPanel, ActionListener action) {
+        JButton button = new JButton(text);
+        addItem(parentPanel, button, position, 4, 1, GridBagConstraints.EAST);
+        button.addActionListener(action);
+    }
+
+    private String obtainKey() {
+        return firstNameTextField.getText().trim() + surnameTextField.getText().trim();
     }
 
     private void addPanel(JFrame frame) {
