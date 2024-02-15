@@ -2,7 +2,7 @@ package lp;
 
 import lp.be.Data;
 import lp.be.dto.Person;
-import lp.fe.App;
+import lp.fe.swing.ApiOption;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -24,7 +24,7 @@ public class Manager {
     }
 
     public static void main(String[] args) {
-        new App().init();
+        ApiOption.showDialog();
     }
 
     public int saveNewPerson(String key, String firstName, String surname, String address, String phone) {

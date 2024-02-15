@@ -30,3 +30,11 @@ C
 src/lp/be/Data.java,3\a\3a3350a7daf85946fa1b462e10579b9e23c5705c
 C
 src/lp/fe/Lang.java,3\f\3f1adfc3f8a8453f984c9468a72083aeb31be1c4
+H
+src/lp/fe/swing/App.java,5\5\5558dfebfba0be98b75186f9fc5945e7461b84ee
+E
+src/lp/fe/fx/App.java,c\f\cf31fc00314f3ec3b3234796bc59a0eb2613b5d8
+N
+src/lp/fe/swing/ApiOption.java,2\d\2df7d75a4c710dd90929321fb2f0757944fa24d0
+D
+src/module-info.java,c\d\cdc434daeee688944ced38ff1c9875422db88382

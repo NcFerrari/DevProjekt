@@ -2,6 +2,8 @@ package lp.fe;
 
 public enum Lang {
 
+    SWING_API("Swing GUI", "Swing GUI"),
+    FX_API("FX GUI", "FX GUI"),
     FIRST_NAME("Jméno", "First name"),
     SURNAME("Příjmení", "Surname"),
     ADDRESS("Adresa", "Address"),
