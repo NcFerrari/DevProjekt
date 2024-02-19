@@ -1,11 +1,6 @@
 
-B
-src/lp/fe/App.java,c\7\c78340d2e60bad03eee26653d77abe799e72ab4c
 C
 src/lp/Manager.java,0\5\05d89f8e91f41715f76c4fc9ef687b0d6d6073bc
-:
-
-.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 w
 G.idea/sonarlint/issuestore/0/5/05d89f8e91f41715f76c4fc9ef687b0d6d6073bc,5\d\5d04ea7fc230cb75bb8644bb93c0f097279dfee5
 <
