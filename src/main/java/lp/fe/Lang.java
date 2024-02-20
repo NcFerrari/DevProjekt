@@ -27,11 +27,7 @@ public enum Lang {
         this.engText = engText;
     }
 
-    public String getCurrentText() {
-        return czeText;
-    }
-
     public String getText() {
-        return getCurrentText();
+        return czeText;
     }
 }

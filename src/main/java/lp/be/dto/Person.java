@@ -1,7 +1,9 @@
 package lp.be.dto;
 
+import lombok.Setter;
 import lp.fe.Lang;
 
+@Setter
 public class Person {
 
     private final String firstName;
@@ -13,14 +15,6 @@ public class Person {
         this.firstName = firstName;
         this.surName = surName;
         this.address = address;
-        this.phoneNumber = phoneNumber;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
