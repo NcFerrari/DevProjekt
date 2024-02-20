@@ -17,23 +17,35 @@ public class LoggerServiceImpl implements LoggerService {
     private static Logger log;
 
     public static <T> LoggerService getInstance(Class<T> classLogging) {
+        return getInstance(classLogging, false);
+    }
+
+    public static <T> LoggerService getInstance(Class<T> classLogging, boolean saveToFile) {
         if (loggerService == null) {
             loggerService = new LoggerServiceImpl();
-            String dailyFolder = LocalDate.now().format(DateTimeFormatter.ofPattern(TextEnum.DATE_FORMAT.getText()));
-            String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern(TextEnum.HOUR_FORMAT.getText()));
-            DailyRollingFileAppender daily = null;
-            try {
-                daily = new DailyRollingFileAppender(
-                        new PatternLayout(TextEnum.LOG_PATTERN.getText()),
-                        String.format(TextEnum.LOG_FILE_FORMAT.getText(), dailyFolder, time),
-                        TextEnum.DATE_FORMAT.getText());
-            } catch (IOException e) {
-                log.trace(e.getMessage());
-            }
-            Logger.getRootLogger().addAppender(daily);
         }
+
+        if (saveToFile) {
+            saveToFile();
+        }
+
         log = Logger.getLogger(classLogging);
         return loggerService;
+    }
+
+    private static void saveToFile() {
+        String dailyFolder = LocalDate.now().format(DateTimeFormatter.ofPattern(TextEnum.DATE_FORMAT.getText()));
+        String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern(TextEnum.HOUR_FORMAT.getText()));
+        DailyRollingFileAppender daily = null;
+        try {
+            daily = new DailyRollingFileAppender(
+                    new PatternLayout(TextEnum.LOG_PATTERN.getText()),
+                    String.format(TextEnum.LOG_FILE_FORMAT.getText(), dailyFolder, time),
+                    TextEnum.DATE_FORMAT.getText());
+        } catch (IOException e) {
+            log.trace(e.getMessage());
+        }
+        Logger.getRootLogger().addAppender(daily);
     }
 
     private LoggerServiceImpl() {
