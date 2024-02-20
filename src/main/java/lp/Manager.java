@@ -1,8 +1,8 @@
 package lp;
 
-import generator.service.LoggerService;
 import lp.be.Data;
 import lp.be.dto.Person;
+import lp.be.service.LoggerService;
 import lp.be.serviceimpl.LoggerServiceImpl;
 import lp.fe.swing.ApiOption;
 import org.apache.log4j.Logger;

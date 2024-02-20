@@ -1,4 +1,4 @@
-package lp.fe;
+package lp.fe.enums;
 
 public enum Lang {
 

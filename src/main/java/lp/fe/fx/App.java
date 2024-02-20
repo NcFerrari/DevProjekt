@@ -15,7 +15,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import lp.Manager;
-import lp.fe.Lang;
+import lp.fe.enums.Lang;
 
 public class App extends Application {
 

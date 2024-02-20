@@ -1,7 +1,7 @@
 package lp.be.serviceimpl;
 
-import generator.service.LoggerService;
-import generator.utils.TextEnum;
+import lp.be.enums.TextEnum;
+import lp.be.service.LoggerService;
 import org.apache.log4j.DailyRollingFileAppender;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
@@ -28,7 +28,7 @@ public class LoggerServiceImpl implements LoggerService {
                         String.format(TextEnum.LOG_FILE_FORMAT.getText(), dailyFolder, time),
                         TextEnum.DATE_FORMAT.getText());
             } catch (IOException e) {
-                e.printStackTrace();
+                log.trace(e.getMessage());
             }
             Logger.getRootLogger().addAppender(daily);
         }

@@ -1,7 +1,7 @@
 package lp.be.dto;
 
 import lombok.Setter;
-import lp.fe.Lang;
+import lp.fe.enums.Lang;
 
 @Setter
 public class Person {

@@ -1,7 +1,7 @@
 package lp.fe.swing;
 
 import lp.Manager;
-import lp.fe.Lang;
+import lp.fe.enums.Lang;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;

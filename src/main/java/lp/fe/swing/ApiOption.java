@@ -1,6 +1,6 @@
 package lp.fe.swing;
 
-import lp.fe.Lang;
+import lp.fe.enums.Lang;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
