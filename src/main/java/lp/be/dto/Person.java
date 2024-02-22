@@ -3,6 +3,9 @@ package lp.be.dto;
 import lombok.Setter;
 import lp.fe.enums.Lang;
 
+/**
+ * Standard messenger class.
+ */
 @Setter
 public class Person {
 

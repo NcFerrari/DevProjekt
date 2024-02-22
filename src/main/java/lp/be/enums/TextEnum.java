@@ -2,6 +2,10 @@ package lp.be.enums;
 
 import lombok.Getter;
 
+/**
+ * This class represents own convention. All classes don't contain any raw String in code. For this mechanic this
+ * enumeration serve. Even for empty String use this enum.
+ */
 @Getter
 public enum TextEnum {
 
@@ -12,6 +16,9 @@ public enum TextEnum {
 
     private final String text;
 
+    /**
+     * @param text Return texts instead of raw String in all codes
+     */
     TextEnum(String text) {
         this.text = text;
     }
