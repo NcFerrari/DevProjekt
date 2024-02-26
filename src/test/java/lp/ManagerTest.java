@@ -37,11 +37,17 @@ class ManagerTest {
 
     @Test
     void saveNewPerson() {
+        Object[] human = Human.generate(HumanAtr.NAME, HumanAtr.SURNAME);
+        String newName = (String) human[0];
+        String newSurname = (String) human[1];
         manager.getData().clear();
         assertEquals(0, manager.getData().size());
         assertEquals(0, manager.saveNewPerson(key, name, surname, address, phone));
         assertEquals(-1, manager.saveNewPerson(key, name, surname, address, phone));
-        assertEquals(-2, manager.saveNewPerson(key, Lang.EMPTY.getText(), Lang.EMPTY.getText(), address, phone));
+        assertEquals(-2, manager.saveNewPerson(key, Lang.EMPTY.getText(), newSurname, address, phone));
+        assertEquals(-2, manager.saveNewPerson(key, newName, Lang.EMPTY.getText(), address, phone));
+        assertEquals(-2, manager.saveNewPerson(key, Lang.SPACE.getText(), newSurname, address, phone));
+        assertEquals(-2, manager.saveNewPerson(key, newName, Lang.SPACE.getText(), address, phone));
     }
 
     @Test
