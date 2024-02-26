@@ -15,7 +15,7 @@
         <packaging>jar</packaging>
         <!--        VERSIONS-->
         <fx.version>11</fx.version>
-        <generators.version>1.3</generators.version>
+        <generators.version>1.3.1</generators.version>
         <lombok.version>1.18.30</lombok.version>
         <logging.version>2.22.1</logging.version>
     </properties>
@@ -56,6 +56,24 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

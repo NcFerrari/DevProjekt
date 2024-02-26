@@ -2,10 +2,7 @@ package lp;
 
 import lp.be.Data;
 import lp.be.dto.Person;
-import lp.be.service.LoggerService;
-import lp.be.serviceimpl.LoggerServiceImpl;
 import lp.fe.swing.ApiOption;
-import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,8 +14,6 @@ public class Manager {
 
     private static Manager manager;
     private final Data data;
-    private static final LoggerService logService = LoggerServiceImpl.getInstance(Manager.class);
-    private static final Logger log = logService.getLog();
 
     /**
      * Singleton method
@@ -47,7 +42,6 @@ public class Manager {
      * @param args no arguments needed
      */
     public static void main(String[] args) {
-        log.info("application started");
         ApiOption.showDialog();
     }
 

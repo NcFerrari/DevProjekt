@@ -2,6 +2,7 @@ package lp.fe.enums;
 
 public enum Lang {
 
+    APPLICATION_STARTED("Aplikace se spustila", "Application started"),
     SWING_API("Swing GUI", "Swing GUI"),
     FX_API("FX GUI", "FX GUI"),
     FIRST_NAME("Jméno", "First name"),
@@ -17,6 +18,7 @@ public enum Lang {
     PERSON_ALREADY_EXISTS("Takový uživatel už existuje", "User already exists"),
     EMPTY_INPUTS("Musíte zadat Jméno a příjmení", "First name and surname are required"),
     EMPTY("", ""),
+    SPACE(" ", " "),
     NEW_LINE("\n", "\n"),
     PERSON_FORMAT("%s, %s, %s, %s", "%s, %s, %s, %s"),
     SUCCESSFULLY_SAVED("Uživatel úspěšně uložen", "Person successfully saved"),

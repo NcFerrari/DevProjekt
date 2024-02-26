@@ -1,5 +1,6 @@
 package lp.be.dto;
 
+import lombok.Getter;
 import lombok.Setter;
 import lp.fe.enums.Lang;
 
@@ -7,6 +8,7 @@ import lp.fe.enums.Lang;
  * Standard messenger class.
  */
 @Setter
+@Getter
 public class Person {
 
     private final String firstName;

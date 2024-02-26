@@ -1,7 +1,10 @@
 package lp.fe.swing;
 
+import lp.be.service.LoggerService;
+import lp.be.serviceimpl.LoggerServiceImpl;
 import lp.fe.enums.Lang;
 import lp.fe.fx.FXApplication;
+import org.apache.log4j.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -17,12 +20,15 @@ public class ApiOption {
 
     private static final JDialog DIALOG = new JDialog();
     private static final List<JButton> BUTTONS = new ArrayList<>();
+    private static final LoggerService logService = LoggerServiceImpl.getInstance(ApiOption.class);
+    private static final Logger log = logService.getLog();
 
     /**
      * Main method of this class. It shows dialog for choose GUI (java technologies e.i. swing, FX, spring etc.)
      * To add new button DON'T MODIFY THIS METHOD! To add button use {@link #addButtons} method
      */
     public static void showDialog() {
+        log.info(Lang.APPLICATION_STARTED.getText());
         BUTTONS.clear();
         addButtons();
         DIALOG.setLayout(null);
