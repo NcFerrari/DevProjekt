@@ -34,3 +34,8 @@ Aby se v JaCoCo ignorovaly zbytečné lombok generované přístupové metody (p
 nechceme zvyšovat počet otestovaných řádků), tak je potřeba vytvořit v root adresáři soubor:<br>
 <i>lombok.config</i><br>
 V tomto souboru se můžete podívat, jak je to nastavené.
+
+<h4> PROPERTIES VS YAML</h4>
+
+![properties vs yaml.png](src%2Fmain%2Fresources%2Freadmeresources%2Fproperties%20vs%20yaml.png)
+
