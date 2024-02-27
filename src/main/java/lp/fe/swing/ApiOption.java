@@ -77,12 +77,7 @@ public class ApiOption {
         BUTTONS.add(button);
     }
 
-    /**
-     * This method is needed just for unit tests
-     *
-     * @return list of all buttons
-     */
-    public List<JButton> getButtons() {
-        return BUTTONS;
+    private ApiOption() {
+
     }
 }

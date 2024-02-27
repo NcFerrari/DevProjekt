@@ -12,7 +12,9 @@ public enum TextEnum {
     DATE_FORMAT("yyyy-MM-dd"),
     HOUR_FORMAT("HH"),
     LOG_PATTERN("[%d] %-8p (%-25c): %m%n"),
-    LOG_FILE_FORMAT("logs/%s/%s.log");
+    LOG_FILE_FORMAT("logs/%s/%s.log"),
+    FILE_NOT_FOUND("Cannot find file %s"),
+    CONFIG_FILE_NAME("config.properties");
 
     private final String text;
 
