@@ -32,6 +32,11 @@ public class ConfigFileServiceImpl implements ConfigFileService {
         return properties.getProperty(key);
     }
 
+    @Override
+    public int getIntValue(String key) {
+        return Integer.parseInt(getValue(key));
+    }
+
     private Properties loadFile(InputStream inputStream) {
         Properties properties = null;
         try {

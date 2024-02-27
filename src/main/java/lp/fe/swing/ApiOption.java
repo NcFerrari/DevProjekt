@@ -1,6 +1,9 @@
 package lp.fe.swing;
 
+import lp.be.enums.TextEnum;
+import lp.be.service.ConfigFileService;
 import lp.be.service.LoggerService;
+import lp.be.serviceimpl.ConfigFileServiceImpl;
 import lp.be.serviceimpl.LoggerServiceImpl;
 import lp.fe.enums.Lang;
 import lp.fe.fx.FXApplication;
@@ -20,19 +23,22 @@ public class ApiOption {
 
     private static final JDialog DIALOG = new JDialog();
     private static final List<JButton> BUTTONS = new ArrayList<>();
-    private static final LoggerService logService = LoggerServiceImpl.getInstance(ApiOption.class);
-    private static final Logger log = logService.getLog();
+    private static final LoggerService LOGGER_SERVICE = LoggerServiceImpl.getInstance(ApiOption.class);
+    private static final Logger LOG = LOGGER_SERVICE.getLog();
+    private static final ConfigFileService CONFIG = ConfigFileServiceImpl.getInstance();
 
     /**
      * Main method of this class. It shows dialog for choose GUI (java technologies e.i. swing, FX, spring etc.)
      * To add new button DON'T MODIFY THIS METHOD! To add button use {@link #addButtons} method
      */
     public static void showDialog() {
-        log.info(Lang.APPLICATION_STARTED.getText());
+        LOG.info(Lang.APPLICATION_STARTED.getText());
         BUTTONS.clear();
         addButtons();
         DIALOG.setLayout(null);
-        DIALOG.setSize(200, 100 * BUTTONS.size());
+        DIALOG.setSize(
+                CONFIG.getIntValue(TextEnum.DIALOG_WIDTH.getText()),
+                CONFIG.getIntValue(TextEnum.DIALOG_HEIGHT.getText()) * BUTTONS.size());
         DIALOG.setLocationRelativeTo(null);
         final int[] incrementationArray = {0};
         BUTTONS.forEach(button -> {

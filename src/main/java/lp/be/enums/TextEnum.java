@@ -14,7 +14,11 @@ public enum TextEnum {
     LOG_PATTERN("[%d] %-8p (%-25c): %m%n"),
     LOG_FILE_FORMAT("logs/%s/%s.log"),
     FILE_NOT_FOUND("Cannot find file %s"),
-    CONFIG_FILE_NAME("config.properties");
+    CONFIG_FILE_NAME("config.properties"),
+    DIALOG_WIDTH("dialog.width"),
+    DIALOG_HEIGHT("dialog.height"),
+    APPLICATION_WIDTH("application.width"),
+    APPLICATION_HEIGHT("application.height");
 
     private final String text;
 

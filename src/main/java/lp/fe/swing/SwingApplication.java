@@ -1,7 +1,10 @@
 package lp.fe.swing;
 
 import lp.Manager;
+import lp.be.enums.TextEnum;
+import lp.be.service.ConfigFileService;
 import lp.be.service.LoggerService;
+import lp.be.serviceimpl.ConfigFileServiceImpl;
 import lp.be.serviceimpl.LoggerServiceImpl;
 import lp.fe.enums.Lang;
 import org.apache.log4j.Logger;
@@ -36,6 +39,7 @@ public class SwingApplication {
     private JPanel formPanel;
     private JPanel buttonsPanel;
     private JScrollPane outputScrollPanel;
+    private static final ConfigFileService CONFIG = ConfigFileServiceImpl.getInstance();
 
     /**
      * Basic initial method where the main frame is setting. For more JComponents use separate methods
@@ -43,7 +47,9 @@ public class SwingApplication {
      */
     public void init() {
         JFrame frame = new JFrame();
-        frame.setSize(600, 500);
+        frame.setSize(
+                CONFIG.getIntValue(TextEnum.APPLICATION_WIDTH.getText()),
+                CONFIG.getIntValue(TextEnum.APPLICATION_HEIGHT.getText()));
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
@@ -157,12 +163,7 @@ public class SwingApplication {
      */
     private void createMethod() {
         String key = firstNameTextField.getText().trim() + surnameTextField.getText().trim();
-        int answer = manager.saveNewPerson(
-                key,
-                firstNameTextField.getText(),
-                surnameTextField.getText(),
-                addressTextField.getText(),
-                phoneTextField.getText());
+        int answer = manager.saveNewPerson(key, firstNameTextField.getText(), surnameTextField.getText(), addressTextField.getText(), phoneTextField.getText());
         if (answer == -2) {
             JOptionPane.showMessageDialog(mainPanel, Lang.EMPTY_INPUTS.getText());
         } else if (answer == -1) {

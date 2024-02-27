@@ -15,6 +15,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import lp.Manager;
+import lp.be.enums.TextEnum;
+import lp.be.service.ConfigFileService;
+import lp.be.serviceimpl.ConfigFileServiceImpl;
 import lp.fe.enums.Lang;
 
 public class FXApplication extends Application {
@@ -23,10 +26,12 @@ public class FXApplication extends Application {
     private VBox mainPane;
     private HBox buttonsPane;
     private TextArea area;
-    private TextField firstNameTextField;
-    private TextField surnameTextField;
-    private TextField addressTextField;
-    private TextField phoneTextField;
+    private final TextField firstNameTextField = new TextField();
+    private final TextField surnameTextField = new TextField();
+    private final TextField addressTextField = new TextField();
+    private final TextField phoneTextField = new TextField();
+
+    private static final ConfigFileService CONFIG = ConfigFileServiceImpl.getInstance();
 
     /**
      * Basic FX method
@@ -37,7 +42,9 @@ public class FXApplication extends Application {
     public void start(Stage stage) {
         mainPane = new VBox();
         mainPane.setAlignment(Pos.TOP_CENTER);
-        Scene scene = new Scene(mainPane, 600, 500);
+        Scene scene = new Scene(mainPane,
+                CONFIG.getIntValue(TextEnum.APPLICATION_WIDTH.getText()),
+                CONFIG.getIntValue(TextEnum.APPLICATION_HEIGHT.getText()));
         stage.setScene(scene);
         stage.setOnCloseRequest(windowEvent -> System.exit(0));
         stage.show();
@@ -72,10 +79,6 @@ public class FXApplication extends Application {
         componentsPane.add(new Label(Lang.SURNAME.getText()), 0, 1);
         componentsPane.add(new Label(Lang.ADDRESS.getText()), 0, 2);
         componentsPane.add(new Label(Lang.PHONE.getText()), 0, 3);
-        firstNameTextField = new TextField();
-        surnameTextField = new TextField();
-        addressTextField = new TextField();
-        phoneTextField = new TextField();
         componentsPane.add(firstNameTextField, 1, 0);
         componentsPane.add(surnameTextField, 1, 1);
         componentsPane.add(addressTextField, 1, 2);
@@ -123,7 +126,6 @@ public class FXApplication extends Application {
         }
         clearTextFields();
     }
-
 
     /**
      * Clear text area.
