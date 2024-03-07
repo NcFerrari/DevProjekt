@@ -1,27 +1,22 @@
 package lp.be.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lp.fe.enums.Lang;
 
 /**
  * Standard messenger class.
  */
-@Setter
-@Getter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Person {
 
-    private final String firstName;
-    private final String surName;
+    private String firstName;
+    private String surName;
     private String address;
     private String phoneNumber;
-
-    public Person(String firstName, String surName, String address, String phoneNumber) {
-        this.firstName = firstName;
-        this.surName = surName;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-    }
 
     @Override
     public String toString() {
