@@ -15,6 +15,7 @@ public enum TextEnum {
     LOG_FILE_FORMAT("logs/%s/%s.log"),
     FILE_NOT_FOUND("Cannot find file %s"),
     CONFIG_FILE_NAME("config.properties"),
+    CONFIG_YAML_NAME("config.yml"),
     DIALOG_WIDTH("dialog.width"),
     DIALOG_HEIGHT("dialog.height"),
     APPLICATION_WIDTH("application.width"),

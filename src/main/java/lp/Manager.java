@@ -4,12 +4,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import lp.be.Data;
 import lp.be.dto.Person;
+import lp.be.enums.TextEnum;
 import lp.be.service.LoggerService;
 import lp.be.serviceimpl.LoggerServiceImpl;
 import lp.fe.swing.ApiOption;
 import org.apache.log4j.Logger;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -55,7 +55,8 @@ public class Manager {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         mapper.findAndRegisterModules();
         try {
-            Person person = mapper.readValue(new File("src/main/resources/config.yaml"), Person.class);
+            Person person = mapper.readValue(Manager.class.getClassLoader()
+                    .getResourceAsStream(TextEnum.CONFIG_YAML_NAME.getText()), Person.class);
             LOG.info(person);
         } catch (IOException e) {
             LOG.error(e.getMessage());
