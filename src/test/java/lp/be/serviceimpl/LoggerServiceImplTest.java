@@ -14,12 +14,6 @@ class LoggerServiceImplTest {
     }
 
     @Test
-    void getInstanceOverloaded() {
-        LoggerService loggerService = LoggerServiceImpl.getInstance(LoggerServiceImplTest.class, true);
-        assertNotNull(loggerService);
-    }
-
-    @Test
     void getLog() {
         LoggerService loggerService = LoggerServiceImpl.getInstance(LoggerServiceImplTest.class);
         assertNotNull(loggerService.getLog());

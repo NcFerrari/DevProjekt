@@ -1,10 +1,10 @@
 package lp.be.service;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
 
 public interface LoggerService {
     /**
-     * By log you can use methods like:
+     * For logging, you can use methods like:
      * <ul>
      *     <li>trace()</li>
      *     <li>debug()</li>

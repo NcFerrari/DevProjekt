@@ -7,7 +7,7 @@ import lp.be.service.LoggerService;
 import lp.be.serviceimpl.ConfigFileServiceImpl;
 import lp.be.serviceimpl.LoggerServiceImpl;
 import lp.fe.enums.Lang;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -33,7 +33,7 @@ public class SwingApplication {
     private final JTextField addressTextField = new JTextField(20);
     private final JTextField phoneTextField = new JTextField(10);
     private final JTextArea output = new JTextArea();
-    private final LoggerService loggerService = LoggerServiceImpl.getInstance(SwingApplication.class, true);
+    private final LoggerService loggerService = LoggerServiceImpl.getInstance(SwingApplication.class);
     private final Logger log = loggerService.getLog();
     private JPanel mainPanel;
     private JPanel formPanel;

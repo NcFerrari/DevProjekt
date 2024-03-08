@@ -7,7 +7,7 @@ import lp.be.serviceimpl.ConfigFileServiceImpl;
 import lp.be.serviceimpl.LoggerServiceImpl;
 import lp.fe.enums.Lang;
 import lp.fe.fx.FXApplication;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;

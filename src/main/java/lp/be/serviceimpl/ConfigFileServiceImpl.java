@@ -3,7 +3,7 @@ package lp.be.serviceimpl;
 import lp.be.enums.TextEnum;
 import lp.be.service.ConfigFileService;
 import lp.be.service.LoggerService;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;

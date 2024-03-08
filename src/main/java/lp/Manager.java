@@ -8,7 +8,7 @@ import lp.be.enums.TextEnum;
 import lp.be.service.LoggerService;
 import lp.be.serviceimpl.LoggerServiceImpl;
 import lp.fe.swing.ApiOption;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,9 +44,16 @@ public class Manager {
     }
 
     /**
-     * v1.0.0 start swing application only
-     * v1.0.1 start FX application (with interface to choose swing or FX)
-     * v1.0.2 implemented maven, logger, and unit tests
+     * <ul>
+     * <li>v1.0.0 start swing application only</li>
+     * <li>v1.0.1 start FX application (with interface to choose swing or FX)</li>
+     * <li>v1.0.2 implemented maven, logger, and unit tests</li>
+     * <li>v1.0.3 Added lombok, code refactoring</li>
+     * <li>v1.0.4 Added comments</li>
+     * <li>v1.0.5 JaCoCo implementation and readme file</li>
+     * <li>v1.0.6 Added config file</li>
+     * <li>v1.0.7 refactored logging (upgrade version)</li>
+     * </ul>
      *
      * @param args no arguments needed
      */
