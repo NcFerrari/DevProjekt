@@ -6,7 +6,7 @@
 
     <groupId>lp.project</groupId>
     <artifactId>DevProject</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.7.1</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -19,7 +19,7 @@
         <lombok.version>1.18.30</lombok.version>
         <logging.version>2.19.0</logging.version>
         <jacoco.version>0.8.5</jacoco.version>
-        <jackson.version>2.13.4</jackson.version>
+        <jackson.version>2.16.1</jackson.version>
     </properties>
 
     <dependencies>
